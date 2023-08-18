@@ -21,7 +21,6 @@ public class FieldLogTrace implements LogTrace {
         TraceId traceId = traceIdHolder;
         Long startTimeMills = currentTimeMillis();
         log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
-
         return new TraceStatus(traceId, startTimeMills, message);
     }
 
