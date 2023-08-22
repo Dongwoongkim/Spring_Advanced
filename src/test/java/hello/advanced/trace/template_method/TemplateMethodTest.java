@@ -1,7 +1,6 @@
-package hello.advanced.trace.template;
+package hello.advanced.trace.template_method;
 
-import hello.advanced.trace.template.code.SubClassLogic1;
-import hello.advanced.trace.template.code.SubClassLogic2;
+import hello.advanced.trace.template_method.code.SubClassLogic1;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +33,7 @@ public class TemplateMethodTest {
      */
     @Test
     public void templateMethodV1() throws Exception {
-        AbstractTemplate template1 = new SubClassLogic2();
+        SubClassLogic1 template1 = new SubClassLogic1();
         template1.execute();
     }
 

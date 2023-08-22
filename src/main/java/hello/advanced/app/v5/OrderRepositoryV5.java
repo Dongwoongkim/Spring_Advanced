@@ -1,5 +1,7 @@
-package hello.advanced.app.v4;
+package hello.advanced.app.v5;
 
+import hello.advanced.trace.callback.TraceCallback;
+import hello.advanced.trace.callback.TraceTemplate;
 import hello.advanced.trace.logtrace.LogTrace;
 import hello.advanced.trace.template_method.AbstractTemplate;
 import lombok.RequiredArgsConstructor;
@@ -7,25 +9,21 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class OrderRepositoryV4 {
+public class OrderRepositoryV5 {
 
     private final LogTrace trace;
+    private final TraceTemplate template;
 
     public void save(String itemId) {
-
-        AbstractTemplate<Void> template = new AbstractTemplate<Void>(trace) {
-            @Override
-            protected Void call() {
-                if (itemId.equals("ex")) {
-                    throw new IllegalStateException("예외 발생");
+        template.execute("OrderRepository.save()", () -> {
+                    if (itemId.equals("ex")) {
+                        throw new IllegalStateException("예외 발생");
+                    }
+                    sleep(1000);
+                    return null;
                 }
-                sleep(1000);
-                return null;
-            }
-        };
-        template.execute("OrderRepository.save()");
+        );
     }
-
     private void sleep(int millis) {
         try {
             Thread.sleep(millis);

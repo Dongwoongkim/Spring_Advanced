@@ -1,23 +1,23 @@
-package hello.advanced.trace.template;
+package hello.advanced.trace.callback;
 
 import hello.advanced.trace.TraceStatus;
 import hello.advanced.trace.logtrace.LogTrace;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RequiredArgsConstructor
-public abstract class AbstractTemplate<T> {
+public class TraceTemplate {
+
     private final LogTrace trace;
 
-    public T execute(String msg) {
+    public <T> T execute(String msg, TraceCallback<T> callback) {
         TraceStatus status = null;
+
         try {
             status = trace.begin(msg);
             // 로직 호출
-            T result = call();
+            T result = callback.call();
+            // 로직 종료
             trace.end(status);
-
             return result;
         } catch (Exception e) {
             trace.exception(status, e);
@@ -25,5 +25,4 @@ public abstract class AbstractTemplate<T> {
         }
     }
 
-    protected abstract T call();
 }

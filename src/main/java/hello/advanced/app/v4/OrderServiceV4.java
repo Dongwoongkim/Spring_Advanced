@@ -1,9 +1,7 @@
 package hello.advanced.app.v4;
 
-import hello.advanced.trace.TraceId;
-import hello.advanced.trace.TraceStatus;
 import hello.advanced.trace.logtrace.LogTrace;
-import hello.advanced.trace.template.AbstractTemplate;
+import hello.advanced.trace.template_method.AbstractTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +23,5 @@ public class OrderServiceV4 {
         };
 
         template.execute("OrderService.orderItem()");
-
     }
 }

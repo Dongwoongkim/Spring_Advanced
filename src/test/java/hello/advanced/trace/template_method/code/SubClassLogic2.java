@@ -1,7 +1,7 @@
 
-package hello.advanced.trace.template.code;
+package hello.advanced.trace.template_method.code;
 
-import hello.advanced.trace.template.AbstractTemplate;
+import hello.advanced.trace.template_method.AbstractTemplate;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
