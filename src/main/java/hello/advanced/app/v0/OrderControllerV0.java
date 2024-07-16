@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OrderControllerV0 {
 
-    private final OrderServiceV0 orderService;
+    private final OrderService orderService;
 
     @GetMapping("/v0/request")
-    public String request(@RequestParam String itemId) {
+    public String request(@RequestParam("itemId") String itemId) {
         orderService.orderItem(itemId);
-        return "ok";
+        return "OK";
     }
 }

@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@RequiredArgsConstructor
 public class OrderRepositoryV0 {
 
     public void save(String itemId) {
@@ -14,9 +13,9 @@ public class OrderRepositoryV0 {
         sleep(1000);
     }
 
-    private void sleep(int millis) {
+    private void sleep(int mills) {
         try {
-            Thread.sleep(millis);
+            Thread.sleep(mills);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

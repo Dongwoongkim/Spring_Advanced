@@ -5,12 +5,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OrderServiceV0 {
+public class OrderService {
 
-    private final OrderRepositoryV0 orderRepository;
+    private final OrderRepositoryV0 orderRepositoryV0;
 
     public void orderItem(String itemId) {
-        orderRepository.save(itemId);
+        orderRepositoryV0.save(itemId);
     }
-
 }
