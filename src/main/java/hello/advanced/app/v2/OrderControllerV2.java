@@ -16,7 +16,7 @@ public class OrderControllerV2 {
 
     @GetMapping("/v2/request")
     public String request(@RequestParam("itemId") String itemId) {
-        TraceStatus status = trace.begin("OrderControllerV1.request()");
+        TraceStatus status = trace.begin("OrderControllerV2.request()");
 
         try {
             orderService.orderItem(itemId, status.getTraceId());

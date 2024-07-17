@@ -16,13 +16,11 @@ public class HelloTraceV1 {
     public TraceStatus begin(String message) {
         TraceId traceId = new TraceId();
         Long startMills = System.currentTimeMillis();
-
-        log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, 0), message);
+        log.info("[{}] {}{}", traceId.getId(), addSpace(START_PREFIX, traceId.getLevel()), message);
 
         // 로그 출력
         return new TraceStatus(traceId, startMills, message);
     }
-
 
     // 정상 처리 로그
     public void end(TraceStatus status) {
